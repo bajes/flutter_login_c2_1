@@ -7,12 +7,16 @@ class GalleryWidget extends StatelessWidget {
   double width;
   double hight;
   Alignment alignment;
+  EdgeInsets padding;
+  String details;
   GalleryWidget(
       {this.imageUrl,
       this.description,
       this.width = 300,
       this.hight = 100,
-      this.alignment = Alignment.center});
+      this.alignment = Alignment.center,
+      this.padding = const EdgeInsets.fromLTRB(0, 0, 0, 0),
+      this.details = ''});
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -20,6 +24,7 @@ class GalleryWidget extends StatelessWidget {
       child: Container(
         alignment: alignment,
         margin: EdgeInsets.all(5),
+        padding: padding,
         height: hight,
         width: width,
         decoration: BoxDecoration(
@@ -30,10 +35,19 @@ class GalleryWidget extends StatelessWidget {
                 fit: BoxFit.cover),
             color: Colors.red,
             borderRadius: BorderRadius.circular(10)),
-        child: Text(
-          description,
-          style: Styles.myTextStyle3,
-          textAlign: TextAlign.left,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              description,
+              style: Styles.myTextStyle3,
+              textAlign: TextAlign.left,
+            ),
+            Text(
+              details,
+              style: Styles.myDetailsStyle,
+            )
+          ],
         ),
       ),
     );

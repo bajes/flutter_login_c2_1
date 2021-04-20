@@ -5,6 +5,7 @@ import 'package:login_flutter_1/widgets.dart';
 import 'package:login_flutter_1/widgets/assignment_widget.dart';
 import 'package:login_flutter_1/widgets/custom_text.dart';
 import 'package:login_flutter_1/widgets/gallery_widget.dart';
+import 'package:login_flutter_1/widgets/gallery_widget_1.dart';
 import 'models/product.dart';
 import 'models/product.dart';
 import 'styles.dart';
@@ -17,6 +18,7 @@ void main() {
 
 class GalleryPage extends StatelessWidget {
   List<Product> products = getListProduct();
+  List<Product> productDetails = getListProductDetails();
 
   @override
   Widget build(BuildContext context) {
@@ -58,6 +60,9 @@ class GalleryPage extends StatelessWidget {
                   imageUrl: e.imageUrl,
                   description: e.description,
                   alignment: Alignment.topLeft,
+                  padding: EdgeInsets.fromLTRB(10, 5, 0, 0),
+                  details:
+                      'View the details of events, journal entries or to-dos selected in KOrganizer',
                   hight: 150,
                 );
               }).toList()),
@@ -109,10 +114,12 @@ class GalleryPage extends StatelessWidget {
             child: SingleChildScrollView(
               scrollDirection: Axis.vertical,
               child: Column(
-                  children: products.map((e) {
-                return GalleryWidget(
+                  children: productDetails.map((e) {
+                return GalleryWidget1(
                   imageUrl: e.imageUrl,
                   description: '',
+                  price: e.price,
+                  details: e.details,
                 );
               }).toList()),
             ),
