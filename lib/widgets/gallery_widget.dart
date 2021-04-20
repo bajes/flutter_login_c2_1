@@ -1,19 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:login_flutter_1/styles.dart';
 
 class GalleryWidget extends StatelessWidget {
   String imageUrl;
   String description;
-  double widths;
-  GalleryWidget({this.imageUrl, this.description, this.widths = 300});
+  double width;
+  double hight;
+  Alignment alignment;
+  GalleryWidget(
+      {this.imageUrl,
+      this.description,
+      this.width = 300,
+      this.hight = 100,
+      this.alignment = Alignment.center});
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Container(
       child: Container(
-        alignment: Alignment.center,
+        alignment: alignment,
         margin: EdgeInsets.all(5),
-        height: 100,
-        width: widths,
+        height: hight,
+        width: width,
         decoration: BoxDecoration(
             image: DecorationImage(
                 colorFilter: ColorFilter.mode(
@@ -22,11 +30,11 @@ class GalleryWidget extends StatelessWidget {
                 fit: BoxFit.cover),
             color: Colors.red,
             borderRadius: BorderRadius.circular(10)),
-        child: Text(description,
-            style: TextStyle(
-                color: Colors.white,
-                fontSize: 25,
-                fontWeight: FontWeight.w700)),
+        child: Text(
+          description,
+          style: Styles.myTextStyle3,
+          textAlign: TextAlign.left,
+        ),
       ),
     );
   }
